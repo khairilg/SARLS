@@ -1,7 +1,7 @@
 # SARLS
 SARLS (Simple Auto Restart for Linux Service)
 
-This script is created by Khairil Gunawan to make my work more simple to monitor linux service is automatically restarted if stopped
+This script is created by Khairil Gunawan to make my work more simple to monitor linux service will automatically restarted if the service is stopped
 
 How to use:
 ```sh
