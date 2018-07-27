@@ -10,7 +10,7 @@ read -p "Enter notification if the service is stopped (example: not running)" pr
 if [ ! -d "/etc/sarls" ]; then
 mkdir /etc/sarls
 fi
-rm -y /etc/sarls/$procname
+rm -f /etc/sarls/$procname
 echo '#! /bin/sh' >> /etc/sarls/$procname
 echo 'if /etc/init.d/'$procname' status | grep -q "'$procnote'";' >> /etc/sarls/$procname
 echo 'then' >> /etc/sarls/$procname
