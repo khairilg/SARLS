@@ -10,18 +10,14 @@ read -p "Enter notification if the service is stopped (example: not running)" pr
 if [ ! -d "/etc/sarls" ]; then
 mkdir /etc/sarls
 fi
-cat <<'EOF' >> /etc/sarls/$procname
-#! /bin/sh
-SNAME=$procname
-SERVICE=/etc/init.d/$SNAME
-if $SERVICE status | grep -q "$procnote";
-then
-echo "service $SNAME is not running, restarting.."
-$SERVICE restart
-else
-echo "service $SNAME is running."
-fi
-EOF
+echo '#! /bin/sh' >> /etc/sarls/$procname
+echo 'if /etc/init.d/$procname status | grep -q "$procnote";' >> /etc/sarls/$procname
+echo 'then' >> /etc/sarls/$procname
+echo 'echo "service $procname is not running, restarting.."' >> /etc/sarls/$procname
+echo '/etc/init.d/$procname restart' >> /etc/sarls/$procname
+echo 'else' >> /etc/sarls/$procname
+echo 'echo "service $procname is running."' >> /etc/sarls/$procname
+echo 'fi' >> /etc/sarls/$procname
 
 # Create crontab for running auto restart file, run every 5 minutes
 crontab -l | { cat; echo "*/5 * * * * sh /etc/sarls/$procname > /dev/null 2>&1"; } | crontab -
