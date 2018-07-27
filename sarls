@@ -3,8 +3,8 @@
 # www.indoworx.com
 
 # Get Data from input
-read -p "Enter linux service name to monitor:" procname
-read -p "Enter notification if the service is stopped (example: not running)" procnote
+read -p "Enter linux service name to monitor: " procname
+read -p "Enter notification if the service is stopped (example: not running): " procnote
 
 # Create cron auto restart file for auto restart the service
 if [ ! -d "/etc/sarls" ]; then
