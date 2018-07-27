@@ -21,7 +21,9 @@ echo 'echo "service '$procname' is running."' >> /etc/sarls/$procname
 echo 'fi' >> /etc/sarls/$procname
 
 # Create crontab for running auto restart file, run every 5 minutes
+if crontab -l || grep -q "'$procname'";
+then
 crontab -l | { cat; echo "*/5 * * * * sh /etc/sarls/$procname > /dev/null 2>&1"; } | crontab -
-
+fi
 echo "Cron Script Simple Auto Restart Linux Service Is Finish"
 echo "Cron file placed in /etc/sarls/$procname"
