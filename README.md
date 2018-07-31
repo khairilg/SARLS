@@ -7,7 +7,7 @@ How to use:
 ```sh
 $ wget tiny.cc/sarls
 $ #or curl -LO sarls https://raw.githubusercontent.com/khairilg/SARLS/master/sarls
-$ sh make.sh
+$ sh sarls
 $ Enter linux service name to monitor: <enter linux service name here>
 $ Enter notification if the service is stopped (example: not running): <enter service notification>
 ```
